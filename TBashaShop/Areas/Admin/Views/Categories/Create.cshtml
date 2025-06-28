@@ -1,0 +1,25 @@
+﻿@model Category
+@section head {
+Categories
+}
+
+@section title {
+Create
+}
+<form method="post" action="/admin/categories/create" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Name Category" name="Name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Image</label>
+        <input type="file" class="form-control" name="Image">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary" >Create</button>
+    </div>
+</form>

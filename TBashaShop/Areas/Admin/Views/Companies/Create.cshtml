@@ -1,0 +1,70 @@
+﻿@model Company
+@section head {
+Companies
+}
+
+@section title {
+Create
+}
+@* <form method="post" action="/admin/categories/create" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Name Company " name="Name">
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter  Description Company" name="Description">
+        </div>
+    </div>
+
+   
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form> *@
+@* 1-Html helper *@
+@* @using(@Html.BeginForm(FormMethod.Post)){
+
+    <div class="card-body">
+        @Html.LabelFor(c=>c.Name)
+        @Html.EditorFor(c => c.Name,new{htmlAttributes= new { @class = "form-control" }})
+        @Html.ValidationMessageFor(c=>c.Name)
+    </div>
+    <div class="card-body">
+        @Html.LabelFor(c => c.Description)
+        @Html.EditorFor(c => c.Description, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(c => c.Description)
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+} *@
+
+@* 2-tag helper *@
+<form asp-area="admin" asp-controller="companies" asp-action="create">
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="Name" for="exampleInputEmail1">Name</label>
+            <input asp-for="Name"  type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Name Company " name="Name">
+            <span asp-validation-for="Name" class="text-danger" ></span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="Description" for="exampleInputEmail1">Description</label>
+            <input asp-for="Description" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter  Description Company" name="Description">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>

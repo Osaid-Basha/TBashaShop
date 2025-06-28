@@ -1,0 +1,37 @@
+﻿@model List<Product>
+@section head {
+Products
+}
+
+@section title {
+Show
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 10px">#</th>
+            <th>Title</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <a type="button" class="btn  bg-gradient-danger" href="/admin/products/delete/@item.Id">Delete</a>
+                    <a type="button" class="btn  bg-gradient-info" href="/admin/products/edit/@item.Id">Edit</a>
+                </td>
+
+            </tr>
+        }
+
+
+
+
+    </tbody>
+</table>
