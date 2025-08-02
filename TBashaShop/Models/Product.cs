@@ -35,8 +35,6 @@ namespace TBashaShop.Models
         [ValidateNever]
         public Category Category { get; set; }
 
-        public int CompanyId {  get; set; }
-        [ValidateNever]
-        public Company Company { get; set; }
+      
     }
 }

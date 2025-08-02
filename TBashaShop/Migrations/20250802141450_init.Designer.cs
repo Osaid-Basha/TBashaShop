@@ -11,8 +11,8 @@ using TBashaShop.Data;
 namespace TBashaShop.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250628190149_intil")]
-    partial class intil
+    [Migration("20250802141450_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -86,27 +86,6 @@ namespace TBashaShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TBashaShop.Models.Company", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Companys");
-                });
-
             modelBuilder.Entity("TBashaShop.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -116,9 +95,6 @@ namespace TBashaShop.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -149,8 +125,6 @@ namespace TBashaShop.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("CompanyId");
-
                     b.ToTable("Products");
                 });
 
@@ -162,23 +136,10 @@ namespace TBashaShop.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TBashaShop.Models.Company", "Company")
-                        .WithMany("Products")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("TBashaShop.Models.Category", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("TBashaShop.Models.Company", b =>
                 {
                     b.Navigation("Products");
                 });
